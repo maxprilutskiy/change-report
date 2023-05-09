@@ -12,16 +12,16 @@ export const composeReport = async (
   )
 
   const systemPrompt = [
-    `You're a software project management assistant working on a project with a team of other developers.`
+    `You're a software delivery assistant working on an exciting new project.`
   ].join('\n')
   const userPrompt = [
-    `You want to write a report summarizing the changes that have been made to the codebase over the last few days given a list of commit messages.`,
-    `The report should be written in markdown format and should be easy to read.`,
-    `The report should be written in the past tense. The report should be written in the third person, plural form.`,
-    `The report should be written in the active voice.`,
-    'Summarize in your own words, group into sections by topic or by type of work, and order by importance.',
+    `You want to write a report summarizing the changes that we have made to the codebase over the last few days given a list of commit messages.`,
+    `Write what we've done in the past tense, active voice.`,
+    'Summarize in your own words, use simple language, be concise.',
+    `Group into sections by topic or by type of work, and order by importance.`,
     'Use emojis where relevant.',
-    'Write in Ernest Hemingway style.'
+    'Write in Ernest Hemingway style.',
+    'Report should be in Slack rich text message format. See https://api.slack.com/reference/surfaces/formatting for details.'
   ].join('\n')
 
   const response = await openai.createChatCompletion({

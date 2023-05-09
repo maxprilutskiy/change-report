@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import {fetchCommitMessages} from './fetch-commit-messages'
 import {composeReport} from './compose-report'
+import {sendSlackMessage} from './send-slack-message'
 
 /**
  * This is the main entry point of the GitHub Action.
@@ -22,6 +23,11 @@ async function run(): Promise<void> {
     const report = await composeReport(commitMessagesList)
     core.info('Generated report:')
     core.info(report)
+
+    const channel = core.getInput('channel')
+    await sendSlackMessage(channel, report)
+
+    core.info('Sent report to Slack')
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
