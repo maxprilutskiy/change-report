@@ -1,0 +1,21 @@
+name: 'Run'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 250
+
+      - uses: ./
+        with:
+          days: 7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
