@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import {fetchCommitMessages} from './fetch-commit-messages'
+import {composeReport} from './compose-report'
 
 /**
  * This is the main entry point of the GitHub Action.
@@ -17,6 +18,10 @@ async function run(): Promise<void> {
 
     core.info(`Fetched ${commitMessagesList.length} commit messages:`)
     core.info(commitMessagesList.join('\n'))
+
+    const report = await composeReport(commitMessagesList)
+    core.info('Generated report:')
+    core.info(report)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
