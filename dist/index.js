@@ -144,9 +144,16 @@ function run() {
             const commitMessagesList = yield (0, fetch_commit_messages_1.fetchCommitMessages)(daysCount);
             core.info(`Fetched ${commitMessagesList.length} commit messages:`);
             core.info(commitMessagesList.join('\n'));
+            if (commitMessagesList.length === 0) {
+                core.info('No commit messages found. Skipping report generation.');
+                return;
+            }
             const report = yield (0, compose_report_1.composeReport)(commitMessagesList);
             core.info('Generated report:');
             core.info(report);
+            if (!report) {
+                throw new Error('Failed to generate report');
+            }
             const channel = core.getInput('channel');
             yield (0, send_slack_message_1.sendSlackMessage)(channel, report);
             core.info('Sent report to Slack');

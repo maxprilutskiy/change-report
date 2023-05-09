@@ -20,9 +20,18 @@ async function run(): Promise<void> {
     core.info(`Fetched ${commitMessagesList.length} commit messages:`)
     core.info(commitMessagesList.join('\n'))
 
+    if (commitMessagesList.length === 0) {
+      core.info('No commit messages found. Skipping report generation.')
+      return
+    }
+
     const report = await composeReport(commitMessagesList)
     core.info('Generated report:')
     core.info(report)
+
+    if (!report) {
+      throw new Error('Failed to generate report')
+    }
 
     const channel = core.getInput('channel')
     await sendSlackMessage(channel, report)
