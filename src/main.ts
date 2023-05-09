@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import {Octokit} from '@octokit/action'
+import {simpleGit} from 'simple-git'
 
 /**
  * This is the main entry point of the GitHub Action.
@@ -27,22 +27,20 @@ run()
 // --
 
 async function fetchCommitMessages(daysCount: string): Promise<string[]> {
-  const octokit = new Octokit()
-
   const now = new Date()
   const startDate = new Date(
     new Date().setDate(now.getDate() - parseInt(daysCount))
   )
-  const startDateIso = startDate.toISOString()
 
-  const response = await octokit.rest.repos.listCommits({
-    owner: process.env.GITHUB_REPOSITORY_OWNER!,
-    repo: process.env.GITHUB_REPOSITORY_NAME!,
-    since: startDateIso,
-    per_page: 100
+  const git = simpleGit()
+  const response = await git.log({
+    from: startDate.toISOString(),
+    to: now.toISOString()
   })
 
-  const commitMessagesList = response.data.map(commit => commit.commit.message)
+  const commitMessagesList = response.all.map(
+    commit => commit.message.split('\n')[0]
+  )
 
   return commitMessagesList
 }
