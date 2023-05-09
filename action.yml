@@ -6,6 +6,10 @@ inputs:
     required: true
     description: 'number of days to include into the report'
     default: 7
+  channel:
+    required: true
+    description: 'channel to report'
+    default: 'general'
 runs:
   using: 'node16'
   main: 'dist/index.js'
