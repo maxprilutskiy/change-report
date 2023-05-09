@@ -13,3 +13,6 @@ jobs:
       - uses: ./
         with:
           days: 7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
