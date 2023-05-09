@@ -32,7 +32,7 @@
     "simple-git": "^3.18.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3",
+    "@types/node": "^20.1.1",
     "@typescript-eslint/parser": "^5.59.2",
     "@vercel/ncc": "^0.36.1",
     "dotenv": "^16.0.3",
