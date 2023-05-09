@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import {simpleGit} from 'simple-git'
+import {fetchCommitMessages} from './fetch-commit-messages'
 
 /**
  * This is the main entry point of the GitHub Action.
@@ -12,7 +12,7 @@ import {simpleGit} from 'simple-git'
 
 async function run(): Promise<void> {
   try {
-    const daysCount = core.getInput('days')
+    const daysCount = parseInt(core.getInput('days'))
     const commitMessagesList = await fetchCommitMessages(daysCount)
 
     core.info(`Fetched ${commitMessagesList.length} commit messages:`)
@@ -23,24 +23,3 @@ async function run(): Promise<void> {
 }
 
 run()
-
-// --
-
-async function fetchCommitMessages(daysCount: string): Promise<string[]> {
-  const now = new Date()
-  const startDate = new Date(
-    new Date().setDate(now.getDate() - parseInt(daysCount))
-  )
-
-  const git = simpleGit()
-  const response = await git.log({
-    from: startDate.toISOString(),
-    to: now.toISOString()
-  })
-
-  const commitMessagesList = response.all.map(
-    commit => commit.message.split('\n')[0]
-  )
-
-  return commitMessagesList
-}
