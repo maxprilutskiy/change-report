@@ -18,9 +18,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.composeReport = void 0;
 const openai_1 = __nccwpck_require__(9211);
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const composeReport = (commitMessagesList) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
     const openai = new openai_1.OpenAIApi(new openai_1.Configuration({
         apiKey: OPENAI_API_KEY
     }));
@@ -31,7 +31,10 @@ const composeReport = (commitMessagesList) => __awaiter(void 0, void 0, void 0, 
         `You want to write a report summarizing the changes that have been made to the codebase over the last few days given a list of commit messages.`,
         `The report should be written in markdown format and should be easy to read.`,
         `The report should be written in the past tense. The report should be written in the third person, plural form.`,
-        `The report should be written in the active voice.`
+        `The report should be written in the active voice.`,
+        'Summarize in your own words, group into sections by topic or by type of work, and order by importance.',
+        'Use emojis where relevant.',
+        'Write in Ernest Hemingway style.'
     ].join('\n');
     const response = yield openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
