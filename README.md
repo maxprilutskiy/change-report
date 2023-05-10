@@ -1,7 +1,7 @@
 Change Report GitHub Action
 ---
 
-This action generates a report from the recent code changes and posts it to Slack.
+This action generates a report from the recent code changes and posts it to Slack or Discord.
 
 ## Usage example
 
@@ -23,17 +23,27 @@ jobs:
 
       - uses: maxprilutskiy/change-report@main
         with:
+          # The destination to post the report to. 
+          # "slack" and "discord" are supported
+          destination: 'slack'
           # Number of days to include into the report
           days: 7
-          # Slack channel to post the report to
+          # Slack channel to post the report to. 
+          # For Slack it's the name of the channel, without the leading "#",
+          # For Discord it's the channel ID
           channel: 'general'
         env:
           # Your OpenAI API key, used to generate the report
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
-          # Your Slack bot token, used to post the report on behalf of the bot
+          # Your Slack bot token, used to post the report on behalf of the bot.
+          # Only needed if you're posting to Slack
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }} 
           # Your Slack signing secret, used to verify the request is coming from Slack
-          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }} 
+          # Only needed if you're posting to Slack
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+          # Your Discord bot token, used to post the report on behalf of the bot.
+          # Only needed if you're posting to Discord
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
 ```
 
 ## Authors
@@ -42,4 +52,4 @@ jobs:
 
 ## Roadmap
 - [x] Slack integration
-- [ ] Discord integration
+- [x] Discord integration
