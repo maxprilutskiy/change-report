@@ -3,7 +3,36 @@ Change Report GitHub Action
 
 This action generates a report from the recent code changes and posts it to Slack or Discord.
 
-## Usage example
+### Demo
+The report is created taking the commit messages in your repo as an input. Which means, the better you describe your work when committing stuff - the better this action will work for you 😉. 
+
+Here's how the generated change report might look:
+
+```
+🚀 Key Changes in Our Project 🚀
+
+We have made some significant changes to our project recently. Here are the most important ones:
+
+📝 Documentation:
+- We updated our README with better formatting and added a roadmap section.
+- We also added more information about the project and how to use it.
+
+💬 Communication:
+- We added support for Discord, so now you can get updates on your Discord channel too!
+- We also created a GitHub Action that sends commit summaries to a Slack channel.
+
+🎨 Branding:
+- We added branding entries into action.yml.
+
+🔧 Refactoring:
+- We tuned up our prompts for better user experience.
+- We removed debug comments that were no longer needed.
+
+🐛 Bug Fixes:
+- We fixed missing input declarations in action.yml.
+```
+
+### Usage example
 
 ```yml
 name: 'Run'
@@ -46,10 +75,11 @@ jobs:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
 ```
 
-## Authors
+### Authors
 
 * **Max Prilutskiy** - [@maxprilutskiy](https://twitter.com/maxprilutskiy)
 
-## Roadmap
+
+### Roadmap
 - [x] Slack integration
 - [x] Discord integration
