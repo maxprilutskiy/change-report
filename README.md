@@ -4,33 +4,56 @@ Change Report GitHub Action
 This action generates a report from the recent code changes and posts it to Slack or Discord.
 
 ### Demo
-The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
+> The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
 
-Here's an example of how the generated change report might look:
+Here's an example of how the generated change report might look like. So, let's say you have a repository with the following commit history:
 
 ```
-🚀 Key Changes in Our Project 🚀
+feat: Develop initial launch plan for SpaceX Internet satellites
+chore: Setup project repository for SpaceX Internet satellite launch
+refactor: Update satellite design to improve stability and reduce weight
+docs: Add user manual for SpaceX Internet service
+fix: Correct satellite positioning for optimal Internet coverage
+test: Run system tests for satellite deployment and connectivity
+build: Prepare launch vehicle for SpaceX Internet satellite deployment
+feat: Implement automated satellite monitoring system for real-time status updates
+refactor: Optimize satellite power consumption to prolong battery life
 
-We have made some significant changes to our project recently. Here are the most important ones:
+... etc
+``` 
 
-📝 Documentation:
-- We updated our README with better formatting and added a roadmap section.
-- We also added more information about the project and how to use it.
+Then, the generated report might look like this:
 
-💬 Communication:
-- We added support for Discord, so now you can get updates on your Discord channel too!
-- We also created a GitHub Action that sends commit summaries to a Slack channel.
-
-🎨 Branding:
-- We added branding entries into action.yml.
-
-🔧 Refactoring:
-- We tuned up our prompts for better user experience.
-- We removed debug comments that were no longer needed.
-
-🐛 Bug Fixes:
-- We fixed missing input declarations in action.yml.
 ```
+🚀 SpaceX Internet Satellite Launch Updates 🛰️
+
+In the past 7 days, we've been working hard to improve our SpaceX Internet satellite service. Here are the most important changes that we've made:
+
+🌐 Connectivity:
+- Fixed intermittent connection issues
+- Addressed DNS resolution issues
+- Improved data encryption and security measures
+- Implemented adaptive modulation to improve signal quality
+- Upgraded satellite antenna design to improve signal reception
+
+📱 User Experience:
+- Introduced SpaceX Internet app for easy access to service
+- Added troubleshooting guide and FAQ section to documentation
+- Improved user interface for SpaceX Internet app
+
+💻 Technical Improvements:
+- Upgraded ground station hardware to improve signal processing
+- Optimized satellite orbit to minimize signal latency
+- Implemented machine learning algorithms to optimize bandwidth allocation
+
+🚀 Deployment:
+- Launched additional satellites to increase coverage area and redundancy 
+- Prepared for launch of new satellites with improved signal processing capabilities 
+- Introduced SpaceX Internet service in international markets 
+
+We're proud of the progress we've made, but there's always more work to be done. Let's keep pushing forward!
+```
+
 
 The report might look slightly differently in your case, as it depends on the commit messages.
 
