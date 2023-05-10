@@ -4,9 +4,9 @@ Change Report GitHub Action
 This action generates a report from the recent code changes and posts it to Slack or Discord.
 
 ### Demo
-The report is created taking the commit messages in your repo as an input. Which means, the better you describe your work when committing stuff - the better this action will work for you 😉. 
+The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
 
-Here's how the generated change report might look:
+Here's an example of how the generated change report might look:
 
 ```
 🚀 Key Changes in Our Project 🚀
