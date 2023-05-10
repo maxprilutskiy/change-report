@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import {fetchCommitMessages} from './fetch-commit-messages'
 import {composeReport} from './compose-report'
 import {sendSlackMessage} from './send-slack-message'
+import {sendDiscordMessage} from './send-discord-message'
 
 async function run(): Promise<void> {
   try {
@@ -24,10 +25,17 @@ async function run(): Promise<void> {
       throw new Error('Failed to generate report')
     }
 
+    const destination = core.getInput('destination')
     const channel = core.getInput('channel')
-    await sendSlackMessage(channel, report)
+    if (destination === 'slack') {
+      await sendSlackMessage(channel, report)
+    } else if (destination === 'discord') {
+      await sendDiscordMessage(channel, report)
+    } else {
+      throw new Error(`Unknown destination: ${destination}`)
+    }
 
-    core.info('Sent report to Slack')
+    core.info('Report sent')
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

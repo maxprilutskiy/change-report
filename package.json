@@ -28,6 +28,7 @@
     "@actions/core": "^1.10.0",
     "@octokit/action": "^5.0.2",
     "@slack/bolt": "^3.13.1",
+    "discord.js": "^14.11.0",
     "openai": "^3.2.1",
     "simple-git": "^3.18.0"
   },

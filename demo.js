@@ -1,21 +1,21 @@
-/* eslint-disable no-console */
 const dotenv = require('dotenv')
 const {fetchCommitMessages} = require('./lib/fetch-commit-messages')
 const {composeReport} = require('./lib/compose-report')
 const {sendSlackMessage} = require('./lib/send-slack-message')
+const {sendDiscordMessage} = require('./lib/send-discord-message')
 
 dotenv.config()
 
 const main = async () => {
   const daysCount = 7
-  const slackChannelName = 'integrations-test'
+  const channel = '1105810974189043762'
 
   const commitMessages = await fetchCommitMessages(daysCount)
   const report = await composeReport(commitMessages)
 
   console.log(report)
 
-  await sendSlackMessage(slackChannelName, report)
+  await sendDiscordMessage(channel, report)
 }
 
 main()

@@ -1,7 +1,10 @@
 name: Change Report
-description: GitHub Action to generate a report from the recent code changes and post it to Slack
+description: GitHub Action to generate a report from the recent code changes and post it to Slack or Discord
 author: Max Prilutskiy
 inputs:
+  destination:
+    required: true
+    description: 'destination to post the report to'
   days: # change this
     required: true
     description: 'number of days to include into the report'
