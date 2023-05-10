@@ -15,12 +15,12 @@ export const composeReport = async (
     `You're a software delivery assistant working on an exciting new project.`
   ].join('\n')
   const userPrompt = [
-    `You're writing a report summarizing the key changes that we have made to the project rececntly, taking a list of commit messages as input.`,
+    `You're writing a report about the key changes that we have made to the project rececntly, taking a list of commit messages as input.`,
     `Write what we've done in the past tense, active voice.`,
-    `Group into sections by type of work, and order by business impact, from highest to lowest.`,
-    'Summarize in your own words, use simple, witty language, be concise.',
-    'Drop updates that are not important, or that are too specific.',
-    'Use emojis where relevant.'
+    `Group into sections by the type of work, use emoji in the section title`,
+    `Then order the sections by business impact, from highest to lowest.`,
+    'Squash updates that are not important, or that are too specific into brief summaries.',
+    'Use simple, witty language, be concise.'
   ].join('\n')
 
   const response = await openai.createChatCompletion({
