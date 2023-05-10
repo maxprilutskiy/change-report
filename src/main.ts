@@ -17,7 +17,7 @@ async function run(): Promise<void> {
       return
     }
 
-    const report = await composeReport(commitMessagesList)
+    const report = await composeReport(daysCount, commitMessagesList)
     core.info('Generated report:')
     core.info(report)
 

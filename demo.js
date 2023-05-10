@@ -11,7 +11,7 @@ const main = async () => {
   const channel = '1105810974189043762'
 
   const commitMessages = await fetchCommitMessages(daysCount)
-  const report = await composeReport(commitMessages)
+  const report = await composeReport(daysCount, commitMessages)
 
   console.log(report)
 

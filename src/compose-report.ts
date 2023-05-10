@@ -1,6 +1,7 @@
 import {OpenAIApi, Configuration} from 'openai'
 
 export const composeReport = async (
+  daysCount: number,
   commitMessagesList: string[]
 ): Promise<string> => {
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY!
@@ -12,15 +13,22 @@ export const composeReport = async (
   )
 
   const systemPrompt = [
-    `You're a software delivery assistant, helping a team of developers(us) to write a report about the key changes that we have made to the project rececntly, taking a list of commit messages as input.`
+    `You're a software delivery assistant working in a team of software developers (us) developing a software product.`,
+    `You're helping our team to write a report about the key changes that we have made to the project over the last ${daysCount} days.`,
+    `You're writing a report that will be sent to the rest of our team`,
+    `You're taking a list of commit messages as input.`,
+    `Your goal is to remind us of what those important and impactful changes that we've recently done are.`,
+    'Your goal is to make us feel proud of our work when we deliver something important and impactful.',
+    `Your goal is also to push us to do more work when we're not doing much work.`
   ].join('\n')
   const userPrompt = [
     `Write what we've done in the past tense, active voice.`,
     `Start with a title, then a brief summary of the most important changes.`,
-    `Group into sections by the type of work, order sections by importance, and use emoji in the section titles.`,
+    `Group by the type of work, order by importance, and use relevant emojis.`,
     'Squash updates that are not important, or that are too specific into brief summaries.',
     'Write in simple, casual, witty language.',
-    `Write in plan text format.`
+    'Write in plain text, with no formatting.',
+    `Keep it short, but not too short.`
   ].join('\n')
 
   const response = await openai.createChatCompletion({
@@ -32,7 +40,7 @@ export const composeReport = async (
       {role: 'user', content: commitMessagesList.join('\n')},
       {role: 'assistant', content: 'Report:'}
     ],
-    max_tokens: 512,
+    max_tokens: 256,
     frequency_penalty: 0.5,
     presence_penalty: 0.5,
     temperature: 0.5,
