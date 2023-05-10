@@ -1,6 +1,9 @@
 name: Change Report
 description: GitHub Action to generate a report from the recent code changes and post it to Slack or Discord
 author: Max Prilutskiy
+branding:
+  icon: 'align-left'
+  color: 'blue'
 inputs:
   destination:
     required: true
