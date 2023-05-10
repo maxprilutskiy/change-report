@@ -5,7 +5,7 @@ This action generates a report from the recent code changes and posts it to Slac
 
 ## Usage example
 
-```yaml
+```yml
 name: 'Run'
 on:
   workflow_dispatch:
