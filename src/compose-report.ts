@@ -19,9 +19,8 @@ export const composeReport = async (
     `Start with a title, then a brief summary of the most important changes.`,
     `Group into sections by the type of work, order sections by importance, and use emoji in the section titles.`,
     'Squash updates that are not important, or that are too specific into brief summaries.',
-    'Use simple, casual, witty language.',
-    `Don't use jargon, or words that are too technical or specific.`,
-    `Don't use markdown, or any other formatting.`
+    'Write in simple, casual, witty language.',
+    `Write in plan text format.`
   ].join('\n')
 
   const response = await openai.createChatCompletion({
