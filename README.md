@@ -4,9 +4,11 @@ Change Report GitHub Action
 This action generates a report from the recent code changes and posts it to Slack or Discord.
 
 ### Demo
-> The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
+> **Important:** The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
 
-Here's an example of how the generated change report might look like. So, let's say you have a repository with the following commit history:
+Here's an example of how the generated change report might look like. 
+
+So, let's say you have a repository with the following commit history:
 
 ```
 feat: Develop initial launch plan for SpaceX Internet satellites
@@ -50,8 +52,6 @@ In the past 7 days, we've been working hard to improve our SpaceX Internet satel
 - Launched additional satellites to increase coverage area and redundancy 
 - Prepared for launch of new satellites with improved signal processing capabilities 
 - Introduced SpaceX Internet service in international markets 
-
-We're proud of the progress we've made, but there's always more work to be done. Let's keep pushing forward!
 ```
 
 
@@ -60,14 +60,14 @@ The report might look slightly differently in your case, as it depends on the co
 ### Usage example
 
 ```yml
-name: 'Run'
+name: 'Change Report'
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 10 * * 1' # Run every Monday at 10am UTC
 
 jobs:
-  run:
+  change-report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
