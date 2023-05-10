@@ -17,6 +17,7 @@ export const composeReport = async (
   const userPrompt = [
     `You're writing a report about the key changes that we have made to the project rececntly, taking a list of commit messages as input.`,
     `Write what we've done in the past tense, active voice.`,
+    `Start with a title, then a brief summary of the most important changes.`,
     `Group into sections by the type of work, use emoji in the section title`,
     `Then order the sections by business impact, from highest to lowest.`,
     'Squash updates that are not important, or that are too specific into brief summaries.',
