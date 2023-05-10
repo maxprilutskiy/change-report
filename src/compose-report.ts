@@ -28,7 +28,7 @@ export const composeReport = async (
     'Squash updates that are not important, or that are too specific into brief summaries.',
     'Write in simple, casual, witty language.',
     'Write in plain text, with no formatting.',
-    `Keep it short, but not too short.`
+    `Keep it short, summarise changes when there's many of them.`
   ].join('\n')
 
   const response = await openai.createChatCompletion({
