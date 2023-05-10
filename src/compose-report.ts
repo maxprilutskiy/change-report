@@ -12,13 +12,12 @@ export const composeReport = async (
   )
 
   const systemPrompt = [
-    `You're a software delivery assistant, helping a team of developers to write a report about the key changes that they have made to the project rececntly, taking a list of commit messages as input.`
+    `You're a software delivery assistant, helping a team of developers(us) to write a report about the key changes that we have made to the project rececntly, taking a list of commit messages as input.`
   ].join('\n')
   const userPrompt = [
     `Write what we've done in the past tense, active voice.`,
     `Start with a title, then a brief summary of the most important changes.`,
-    `Group into sections by the type of work, use emoji in the section titles.`,
-    'Start with the most important sections first, then the less important ones.',
+    `Group into sections by the type of work, order sections by importance, and use emoji in the section titles.`,
     'Squash updates that are not important, or that are too specific into brief summaries.',
     'Use simple, casual, witty language.',
     `Don't use jargon, or words that are too technical or specific.`,
