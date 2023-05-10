@@ -6,8 +6,6 @@ This action generates a report from the recent code changes and posts it to Slac
 ### Demo
 The report is created by taking the commit messages in your repository as input. This means that the more descriptive you are when committing changes, the better this action will work for you 😉. 
 
-The report might look slightly differently in your case, given your commit messages.
-
 Here's an example of how the generated change report might look:
 
 ```
@@ -33,6 +31,8 @@ We have made some significant changes to our project recently. Here are the most
 🐛 Bug Fixes:
 - We fixed missing input declarations in action.yml.
 ```
+
+The report might look slightly differently in your case, as it depends on the commit messages.
 
 ### Usage example
 
